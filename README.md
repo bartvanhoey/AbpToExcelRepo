@@ -24,7 +24,7 @@ The following tools are needed to be able to run the solution.
 -   Install or update the ABP CLI:
 
 ```bash
-abp new AbpToExcel -u blazor
+dotnet tool install -g Volo.Abp.Cli || dotnet tool update -g Volo.Abp.Cli
 ```
 
 -   Use the following ABP CLI command:
