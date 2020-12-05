@@ -60,6 +60,10 @@ namespace AbpToExcel.Application.ExcelExport
                     }
                 );
                 sheetData.AppendChild(row3);
+
+                document.Save();
+                document.Close();
+                
                 return memoryStream.ToArray();
             }
         }
