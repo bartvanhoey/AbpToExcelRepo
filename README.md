@@ -1,5 +1,7 @@
 # How to export Excel files from an ABP Blazor application
 
+![.NET](https://github.com/bartvanhoey/AbpToExcelRepo/workflows/.NET/badge.svg)
+
 ## Introduction
 
 In this article, I will show you a way on how you can export data to an Excel file from the ABP framework.
