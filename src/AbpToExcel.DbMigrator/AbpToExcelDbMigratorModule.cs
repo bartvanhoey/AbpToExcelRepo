@@ -7,7 +7,7 @@ namespace AbpToExcel.DbMigrator
 {
     [DependsOn(
         typeof(AbpAutofacModule),
-        typeof(AbpToExcelEntityFrameworkCoreDbMigrationsModule),
+        typeof(AbpToExcelEntityFrameworkCoreModule),
         typeof(AbpToExcelApplicationContractsModule)
         )]
     public class AbpToExcelDbMigratorModule : AbpModule

@@ -6,6 +6,7 @@ using Volo.Abp.Identity;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement.HttpApi;
+using Volo.Abp.SettingManagement;
 using Volo.Abp.TenantManagement;
 
 namespace AbpToExcel
@@ -16,7 +17,8 @@ namespace AbpToExcel
         typeof(AbpIdentityHttpApiModule),
         typeof(AbpPermissionManagementHttpApiModule),
         typeof(AbpTenantManagementHttpApiModule),
-        typeof(AbpFeatureManagementHttpApiModule)
+        typeof(AbpFeatureManagementHttpApiModule),
+        typeof(AbpSettingManagementHttpApiModule)
         )]
     public class AbpToExcelHttpApiModule : AbpModule
     {

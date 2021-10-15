@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "https://localhost:44344",
-      "sslPort": 44344
+      "applicationUrl": "https://localhost:44399",
+      "sslPort": 44399
     }
   },
   "profiles": {
@@ -18,7 +18,7 @@
     "AbpToExcel.HttpApi.Host": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:44344",
+      "applicationUrl": "https://localhost:44399",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

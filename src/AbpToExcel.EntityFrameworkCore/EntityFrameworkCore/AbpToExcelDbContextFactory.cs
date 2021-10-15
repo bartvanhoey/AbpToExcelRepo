@@ -7,18 +7,18 @@ namespace AbpToExcel.EntityFrameworkCore
 {
     /* This class is needed for EF Core console commands
      * (like Add-Migration and Update-Database commands) */
-    public class AbpToExcelMigrationsDbContextFactory : IDesignTimeDbContextFactory<AbpToExcelMigrationsDbContext>
+    public class AbpToExcelDbContextFactory : IDesignTimeDbContextFactory<AbpToExcelDbContext>
     {
-        public AbpToExcelMigrationsDbContext CreateDbContext(string[] args)
+        public AbpToExcelDbContext CreateDbContext(string[] args)
         {
             AbpToExcelEfCoreEntityExtensionMappings.Configure();
 
             var configuration = BuildConfiguration();
 
-            var builder = new DbContextOptionsBuilder<AbpToExcelMigrationsDbContext>()
+            var builder = new DbContextOptionsBuilder<AbpToExcelDbContext>()
                 .UseSqlServer(configuration.GetConnectionString("Default"));
 
-            return new AbpToExcelMigrationsDbContext(builder.Options);
+            return new AbpToExcelDbContext(builder.Options);
         }
 
         private static IConfigurationRoot BuildConfiguration()

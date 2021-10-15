@@ -9,7 +9,6 @@ namespace AbpToExcel.Permissions
         public override void Define(IPermissionDefinitionContext context)
         {
             var myGroup = context.AddGroup(AbpToExcelPermissions.GroupName);
-
             //Define your own permissions here. Example:
             //myGroup.AddPermission(AbpToExcelPermissions.MyPermission1, L("Permission:MyPermission1"));
         }

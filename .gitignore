@@ -258,3 +258,5 @@ src/AbpToExcel.IdentityServer/Logs/*
 src/AbpToExcel.HttpApi.Host/Logs/*
 src/AbpToExcel.HttpApi.Host/Logs/*
 src/AbpToExcel.DbMigrator/Logs/*
+src/AbpToExcel.Blazor.Server/Logs/*
+src/AbpToExcel.Blazor.Server.Tiered/Logs/*

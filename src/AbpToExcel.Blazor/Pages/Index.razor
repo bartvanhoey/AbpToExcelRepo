@@ -11,11 +11,11 @@
     </Button>
 </Row>
 
-@code {
+ @code {
     protected async Task ExportToExcel()
     {
         var excelBytes = await ExportToExcelAppService.ExportToExcel();
         await JSRuntime.InvokeVoidAsync("saveAsFile", $"test_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.xlsx",
-            Convert.ToBase64String(excelBytes));
+        Convert.ToBase64String(excelBytes));
     }
 }

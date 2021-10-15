@@ -20,14 +20,14 @@ namespace AbpToExcel.EntityFrameworkCore
 
         public async Task MigrateAsync()
         {
-            /* We intentionally resolving the AbpToExcelMigrationsDbContext
+            /* We intentionally resolving the AbpToExcelDbContext
              * from IServiceProvider (instead of directly injecting it)
              * to properly get the connection string of the current tenant in the
              * current scope.
              */
 
             await _serviceProvider
-                .GetRequiredService<AbpToExcelMigrationsDbContext>()
+                .GetRequiredService<AbpToExcelDbContext>()
                 .Database
                 .MigrateAsync();
         }

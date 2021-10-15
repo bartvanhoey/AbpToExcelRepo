@@ -11,7 +11,7 @@ using Volo.Abp.Modularity;
 namespace AbpToExcel.EntityFrameworkCore
 {
     [DependsOn(
-        typeof(AbpToExcelEntityFrameworkCoreDbMigrationsModule),
+        typeof(AbpToExcelEntityFrameworkCoreModule),
         typeof(AbpToExcelTestBaseModule),
         typeof(AbpEntityFrameworkCoreSqliteModule)
         )]
@@ -47,11 +47,11 @@ namespace AbpToExcel.EntityFrameworkCore
             var connection = new SqliteConnection("Data Source=:memory:");
             connection.Open();
 
-            var options = new DbContextOptionsBuilder<AbpToExcelMigrationsDbContext>()
+            var options = new DbContextOptionsBuilder<AbpToExcelDbContext>()
                 .UseSqlite(connection)
                 .Options;
 
-            using (var context = new AbpToExcelMigrationsDbContext(options))
+            using (var context = new AbpToExcelDbContext(options))
             {
                 context.GetService<IRelationalDatabaseCreator>().CreateTables();
             }
