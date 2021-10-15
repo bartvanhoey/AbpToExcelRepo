@@ -4,32 +4,32 @@
 
 ## Introduction
 
-In this article, I will show you a way on how you can export data to an Excel file from the ABP framework.
-
-The sample application has been developed with **Blazor** as the UI framework and **SQL Server** as the database provider.
+In this article, I will show you  how can export data to an Excel file from the ABP framework.
 
 ### Source Code
 
-Source code of the completed application is [available on GitHub](https://github.com/bartvanhoey/AbpToExcelRepo).
+The sample application has been developed with **Blazor** as the UI framework and **SQL Server** as the database provider.
+
+The source code of the completed application is [available on GitHub](https://github.com/bartvanhoey/AbpToExcelRepo).
 
 ## Requirements
 
 The following tools are needed to be able to run the solution.
 
--   .NET 5.0 SDK
--   Visual Studio 2019 16.8.0+ or another compatible IDE
+- .NET 5.0 SDK
+- Visual Studio 2019 16.8.0+ or another compatible IDE
 
 ## Development
 
 ### Creating a new Application
 
--   Install or update the ABP CLI:
+- Install or update the ABP CLI:
 
 ```bash
 dotnet tool install -g Volo.Abp.Cli || dotnet tool update -g Volo.Abp.Cli
 ```
 
--   Use the following ABP CLI command:
+- Use the following ABP CLI command:
 
 ```bash
 abp new AbpToExcel -u blazor
@@ -37,16 +37,16 @@ abp new AbpToExcel -u blazor
 
 ### Open & Run the Application
 
--   Open the solution in Visual Studio (or your favorite IDE).
--   Run the `AbpToExcel.DbMigrator` application to seed the initial data.
--   Run the `AbpToExcel.HttpApi.Host` application that starts the server side.
--   Run the `AbpToExcel.Blazor` application to start the UI.
+- Open the solution in Visual Studio (or your favorite IDE).
+- Run the `AbpToExcel.DbMigrator` application to seed the initial data.
+- Run the `AbpToExcel.HttpApi.Host` application that starts the server-side.
+- Run the `AbpToExcel.Blazor` application to start the UI.
 
-## Create the ExportToExcelAppService ApplicationService
+### Create the ExportToExcelAppService ApplicationService
 
--   Create a new folder **ExcelExport** in the **Application.Contracts** project.
+- Create a new folder **ExcelExport** in the **Application.Contracts** project.
 
--   Add a new **IExportToExcelAppService.cs** file to the **ExcelExport** folder with following content.
+- Add a new **IExportToExcelAppService.cs** file to the **ExcelExport** folder with following content.
 
 ```csharp
 using System.Threading.Tasks;
@@ -62,9 +62,9 @@ namespace AbpToExcel.Application.Contracts.ExcelExport
 
 ```
 
--   Create a new **ExcelExport** folder in the **Application** project.
+- Create a new **ExcelExport** folder in the **Application** project.
 
--   Open a command prompt in the **Application** project and run the following command to install the necessary nuget packages.
+- Open a command prompt in the **Application** project and run the following command to install the necessary NuGet packages.
 
 ```bash
 dotnet add package documentformat.openxml
@@ -72,7 +72,7 @@ dotnet add package documentformat.openxml.packaging
 dotnet add package documentformat.openxml.spreadsheet
 ```
 
--   Add a new file **ExcelFileGenerator.cs** to the **ExcelExport** folder and copy/paste code below.
+- Add a new file **ExcelFileGenerator.cs** to the **ExcelExport** folder and copy/paste code below.
 
 ```csharp
 using System.IO;
@@ -149,7 +149,7 @@ namespace AbpToExcel.Application.ExcelExport
 
 ```
 
--   Add a new **ExportToExcelAppService.cs** file to the **Application** project and copy/paste the code below.
+- Add a new **ExportToExcelAppService.cs** file to the **Application** project and copy/paste the code below.
 
 ```csharp
 using System.Threading.Tasks;
@@ -175,9 +175,9 @@ Run the **HttpApi.Host** application to see the export-to-excel endpoint in Swag
 
 ## Add a javascript file needed for downloading Excel files
 
--   Create a **js** folder to the **wwwwroot** folder of the **Blazor** project.
+- Create a **js** folder to the **wwwwroot** folder of the **Blazor** project.
 
--   Add an **exportexcel.js** file to the **js** folder and copy/paste the code below.
+- Add an **exportoexcel.js** file to the **js** folder and copy/paste the code below.
 
 ```javascript
 function saveAsFile(filename, bytesBase64) {
@@ -190,7 +190,7 @@ function saveAsFile(filename, bytesBase64) {
 }
 ```
 
--   Open the **index.html** file in the **wwwwroot** folder of the **Blazor** project and add this line of code at the end.
+- Open the **index.html** file in the **wwwroot** folder of the **Blazor** project and add this line of code at the end.
 
 ```html
 <script src="js/exportexcel.js"></script>
@@ -198,7 +198,7 @@ function saveAsFile(filename, bytesBase64) {
 
 ## Call the IExportToExcelAppService from the Blazor project
 
--   Replace the content in the **index.razor** file with following code.
+- Replace the content in the **index.razor** file with the following code.
 
 ```razor
 @page "/"
@@ -224,4 +224,10 @@ function saveAsFile(filename, bytesBase64) {
 }
 ```
 
+### Start both the Blazor and the**HttpApi.Host**project to run the application
+
 Run both the **HttpApi.Host** and **Blazor** applications and test the export to Excel file function.
+
+Get the [source code](https://github.com/bartvanhoey/AbpToExcelRepo.git) on GitHub.
+
+Enjoy and have fun!
