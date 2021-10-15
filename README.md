@@ -17,7 +17,7 @@ The source code of the completed application is [available on GitHub](https://gi
 The following tools are needed to be able to run the solution.
 
 - .NET 5.0 SDK
-- Visual Studio 2019 16.8.0+ or another compatible IDE
+- VsCode, Visual Studio 2019 or another compatible IDE
 
 ## Development
 
@@ -32,7 +32,7 @@ dotnet tool install -g Volo.Abp.Cli || dotnet tool update -g Volo.Abp.Cli
 - Use the following ABP CLI command:
 
 ```bash
-abp new AbpToExcel -u blazor
+abp new AbpToExcel -u blazor -o AbpToExcel
 ```
 
 ### Open & Run the Application
@@ -177,7 +177,7 @@ Run the **HttpApi.Host** application to see the export-to-excel endpoint in Swag
 
 - Create a **js** folder to the **wwwwroot** folder of the **Blazor** project.
 
-- Add an **exportoexcel.js** file to the **js** folder and copy/paste the code below.
+- Add an **exporttoexcel.js** file to the **js** folder and copy/paste the code below.
 
 ```javascript
 function saveAsFile(filename, bytesBase64) {
@@ -193,7 +193,7 @@ function saveAsFile(filename, bytesBase64) {
 - Open the **index.html** file in the **wwwroot** folder of the **Blazor** project and add this line of code at the end.
 
 ```html
-<script src="js/exportexcel.js"></script>
+<script src="js/exporttoexcel.js"></script>
 ```
 
 ## Call the IExportToExcelAppService from the Blazor project
