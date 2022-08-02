@@ -1,7 +1,6 @@
-﻿namespace AbpToExcel
-{
-    public abstract class AbpToExcelDomainTestBase : AbpToExcelTestBase<AbpToExcelDomainTestModule> 
-    {
+﻿namespace AbpToExcel;
 
-    }
+public abstract class AbpToExcelDomainTestBase : AbpToExcelTestBase<AbpToExcelDomainTestModule>
+{
+
 }

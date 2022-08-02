@@ -1,21 +1,23 @@
 ﻿@page "/"
-@using AbpToExcel.Application.Contracts.ExcelExport
+@using AbpToExcel.ExcelExport
 @inject IExportToExcelAppService ExportToExcelAppService
-@inject IJSRuntime JSRuntime
+@inject IJSRuntime JsRuntime
 
 <Row Class="d-flex px-0 mx-0 mb-1">
-    <Button Clicked="@(() => ExportToExcel())" class="p-0 ml-auto mr-2" style="background-color: transparent"
-        title="Download">
+    <Button Clicked="@(ExportToExcel)" class="p-0 ml-auto mr-2" style="background-color: transparent"
+            title="Download">
         <span class="fa fa-file-excel fa-lg m-0" style="color: #008000; background-color: white;"
-            aria-hidden="true"></span>
+              aria-hidden="true">
+        </span>
+        Click Me!
     </Button>
 </Row>
 
- @code {
-    protected async Task ExportToExcel()
+@code {
+    private async Task ExportToExcel()
     {
         var excelBytes = await ExportToExcelAppService.ExportToExcel();
-        await JSRuntime.InvokeVoidAsync("saveAsFile", $"test_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.xlsx",
-        Convert.ToBase64String(excelBytes));
+        await JsRuntime.InvokeVoidAsync("saveAsFile", $"test_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.xlsx",
+            Convert.ToBase64String(excelBytes));
     }
 }

@@ -5,31 +5,30 @@ using Microsoft.Extensions.DependencyInjection;
 using AbpToExcel.Data;
 using Volo.Abp.DependencyInjection;
 
-namespace AbpToExcel.EntityFrameworkCore
+namespace AbpToExcel.EntityFrameworkCore;
+
+public class EntityFrameworkCoreAbpToExcelDbSchemaMigrator
+    : IAbpToExcelDbSchemaMigrator, ITransientDependency
 {
-    public class EntityFrameworkCoreAbpToExcelDbSchemaMigrator
-        : IAbpToExcelDbSchemaMigrator, ITransientDependency
+    private readonly IServiceProvider _serviceProvider;
+
+    public EntityFrameworkCoreAbpToExcelDbSchemaMigrator(
+        IServiceProvider serviceProvider)
     {
-        private readonly IServiceProvider _serviceProvider;
+        _serviceProvider = serviceProvider;
+    }
 
-        public EntityFrameworkCoreAbpToExcelDbSchemaMigrator(
-            IServiceProvider serviceProvider)
-        {
-            _serviceProvider = serviceProvider;
-        }
+    public async Task MigrateAsync()
+    {
+        /* We intentionally resolving the AbpToExcelDbContext
+         * from IServiceProvider (instead of directly injecting it)
+         * to properly get the connection string of the current tenant in the
+         * current scope.
+         */
 
-        public async Task MigrateAsync()
-        {
-            /* We intentionally resolving the AbpToExcelDbContext
-             * from IServiceProvider (instead of directly injecting it)
-             * to properly get the connection string of the current tenant in the
-             * current scope.
-             */
-
-            await _serviceProvider
-                .GetRequiredService<AbpToExcelDbContext>()
-                .Database
-                .MigrateAsync();
-        }
+        await _serviceProvider
+            .GetRequiredService<AbpToExcelDbContext>()
+            .Database
+            .MigrateAsync();
     }
 }

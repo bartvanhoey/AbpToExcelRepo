@@ -1,12 +1,11 @@
 ﻿using AutoMapper;
 
-namespace AbpToExcel.Blazor
+namespace AbpToExcel.Blazor;
+
+public class AbpToExcelBlazorAutoMapperProfile : Profile
 {
-    public class AbpToExcelBlazorAutoMapperProfile : Profile
+    public AbpToExcelBlazorAutoMapperProfile()
     {
-        public AbpToExcelBlazorAutoMapperProfile()
-        {
-            //Define your AutoMapper configuration here for the Blazor project.
-        }
+        //Define your AutoMapper configuration here for the Blazor project.
     }
 }

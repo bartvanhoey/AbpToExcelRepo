@@ -1,9 +1,8 @@
 ﻿using System.Threading.Tasks;
 
-namespace AbpToExcel.Data
+namespace AbpToExcel.Data;
+
+public interface IAbpToExcelDbSchemaMigrator
 {
-    public interface IAbpToExcelDbSchemaMigrator
-    {
-        Task MigrateAsync();
-    }
+    Task MigrateAsync();
 }

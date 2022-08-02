@@ -1,13 +1,12 @@
 ﻿using AbpToExcel.Localization;
 using Volo.Abp.AspNetCore.Components;
 
-namespace AbpToExcel.Blazor
+namespace AbpToExcel.Blazor;
+
+public abstract class AbpToExcelComponentBase : AbpComponentBase
 {
-    public abstract class AbpToExcelComponentBase : AbpComponentBase
+    protected AbpToExcelComponentBase()
     {
-        protected AbpToExcelComponentBase()
-        {
-            LocalizationResource = typeof(AbpToExcelResource);
-        }
+        LocalizationResource = typeof(AbpToExcelResource);
     }
 }

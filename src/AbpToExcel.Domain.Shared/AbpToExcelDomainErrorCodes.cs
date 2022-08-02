@@ -1,7 +1,6 @@
-﻿namespace AbpToExcel
+﻿namespace AbpToExcel;
+
+public static class AbpToExcelDomainErrorCodes
 {
-    public static class AbpToExcelDomainErrorCodes
-    {
-        /* You can add your business exception error codes here, as constants */
-    }
+    /* You can add your business exception error codes here, as constants */
 }

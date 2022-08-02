@@ -254,9 +254,12 @@ paket-files/
 # AbpToExcel
 src/AbpToExcel.Web/Logs/*
 src/AbpToExcel.Web.Host/Logs/*
-src/AbpToExcel.IdentityServer/Logs/*
+src/AbpToExcel.AuthServer/Logs/*
 src/AbpToExcel.HttpApi.Host/Logs/*
 src/AbpToExcel.HttpApi.Host/Logs/*
 src/AbpToExcel.DbMigrator/Logs/*
 src/AbpToExcel.Blazor.Server/Logs/*
 src/AbpToExcel.Blazor.Server.Tiered/Logs/*
+
+# Use abp install-libs to restore.
+**/wwwroot/libs/*

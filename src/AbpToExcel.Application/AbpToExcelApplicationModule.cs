@@ -7,26 +7,25 @@ using Volo.Abp.PermissionManagement;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.TenantManagement;
 
-namespace AbpToExcel
+namespace AbpToExcel;
+
+[DependsOn(
+    typeof(AbpToExcelDomainModule),
+    typeof(AbpAccountApplicationModule),
+    typeof(AbpToExcelApplicationContractsModule),
+    typeof(AbpIdentityApplicationModule),
+    typeof(AbpPermissionManagementApplicationModule),
+    typeof(AbpTenantManagementApplicationModule),
+    typeof(AbpFeatureManagementApplicationModule),
+    typeof(AbpSettingManagementApplicationModule)
+    )]
+public class AbpToExcelApplicationModule : AbpModule
 {
-    [DependsOn(
-        typeof(AbpToExcelDomainModule),
-        typeof(AbpAccountApplicationModule),
-        typeof(AbpToExcelApplicationContractsModule),
-        typeof(AbpIdentityApplicationModule),
-        typeof(AbpPermissionManagementApplicationModule),
-        typeof(AbpTenantManagementApplicationModule),
-        typeof(AbpFeatureManagementApplicationModule),
-        typeof(AbpSettingManagementApplicationModule)
-        )]
-    public class AbpToExcelApplicationModule : AbpModule
+    public override void ConfigureServices(ServiceConfigurationContext context)
     {
-        public override void ConfigureServices(ServiceConfigurationContext context)
+        Configure<AbpAutoMapperOptions>(options =>
         {
-            Configure<AbpAutoMapperOptions>(options =>
-            {
-                options.AddMaps<AbpToExcelApplicationModule>();
-            });
-        }
+            options.AddMaps<AbpToExcelApplicationModule>();
+        });
     }
 }

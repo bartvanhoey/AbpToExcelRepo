@@ -4,15 +4,14 @@ using System.Text;
 using AbpToExcel.Localization;
 using Volo.Abp.Application.Services;
 
-namespace AbpToExcel
+namespace AbpToExcel;
+
+/* Inherit your application services from this class.
+ */
+public abstract class AbpToExcelAppService : ApplicationService
 {
-    /* Inherit your application services from this class.
-     */
-    public abstract class AbpToExcelAppService : ApplicationService
+    protected AbpToExcelAppService()
     {
-        protected AbpToExcelAppService()
-        {
-            LocalizationResource = typeof(AbpToExcelResource);
-        }
+        LocalizationResource = typeof(AbpToExcelResource);
     }
 }
