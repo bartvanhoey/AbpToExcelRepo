@@ -14,12 +14,13 @@ The source code of the completed application is [available on GitHub](https://gi
 
 The following tools are needed to be able to run the solution.
 
-- .NET 6.0 SDK
-- VsCode, Visual Studio 2019 or another compatible IDE
-- ABP 6.0.0
+- .NET 8.0 SDK
+- VsCode, Visual Studio 2022 or another compatible IDE
+- ABP 8.0.0
+  
 ## Development
 
-### Creating a new Application
+### Create a new Application
 
 - Install or update the ABP CLI:
 
@@ -37,7 +38,7 @@ abp new AbpToExcel -u blazor -o AbpToExcel
 
 - Open the solution in Visual Studio (or your favorite IDE).
 - Run the `AbpToExcel.DbMigrator` application to seed the initial data.
-- Run the `AbpToExcel.HttpApi.Host` application that starts the server-side.
+- Run the `AbpToExcel.HttpApi.Host` application that starts the API.
 - Run the `AbpToExcel.Blazor` application to start the UI.
 
 ### Create the ExportToExcelAppService ApplicationService
@@ -49,13 +50,12 @@ abp new AbpToExcel -u blazor -o AbpToExcel
 ```csharp
 using System.Threading.Tasks;
 using Volo.Abp.Application.Services;
-using static AbpToExcel.ExcelExport.ExcelFileGenerator;
 
 namespace AbpToExcel.ExcelExport
 {
-    public class ExportToExcelAppService : ApplicationService, IExportToExcelAppService
+    public interface IExportToExcelAppService :  IApplicationService
     {
-        public Task<byte[]> ExportToExcel() => Task.FromResult(GenerateExcelFile());
+        Task<byte[]> ExportToExcel();
     }
 }
 
@@ -64,9 +64,7 @@ namespace AbpToExcel.ExcelExport
 - Open a command prompt in the **Application** project and run the following command to install the necessary NuGet packages.
 
 ```bash
-dotnet add package documentformat.openxml
-dotnet add package documentformat.openxml.packaging
-dotnet add package documentformat.openxml.spreadsheet
+    dotnet add package documentformat.openxml
 ```
 
 - Create a new **ExcelExport** folder in the **Application** project.
@@ -138,7 +136,6 @@ namespace AbpToExcel.ExcelExport
             sheetData?.AppendChild(row3);
 
             document.Save();
-            document.Close();
 
             return memoryStream.ToArray();
         }
@@ -166,7 +163,7 @@ Run the **HttpApi.Host** application to see the export-to-excel endpoint in Swag
 
 ![swagger-ui](exporttoexcel.jpg)
 
-## Add a javascript file needed for downloading Excel files
+## Some JavaScript to download Excel files
 
 - Create a **js** folder to the **wwwwroot** folder of the **Blazor** project.
 
